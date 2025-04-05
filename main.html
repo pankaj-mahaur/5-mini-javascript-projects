@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>5 MINI JAVASCRIPT PROJECTS</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+          /* start styling for Color Flipper */
+            .container1 {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                height: 50vh;
+                font-family: Arial, sans-serif;
+            }
+            .heading{
+                font-size: 40px;
+            }
+            #green {
+                background-color: green;
+            }
+            #red {
+                background-color: red;
+            }
+            #blue {
+                background-color: blue;
+            }
+            
+            button{
+                width: 100px;
+                height: 60px;
+                border: 1px solid #fff;
+                border-radius: 10px;
+                font-size: 20px;
+                font-weight: bold;
+                
+            }
+            button:hover {
+                cursor: pointer;
+            }
+            /* end styling for Color Flipper */
+            /* start styling for Palindrome Checker */
+            .container2 {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                height: 50vh;
+                font-family: Arial, sans-serif;
+                background: linear-gradient(to right, #ff416c, #ff4b2b, #ff4b2b, #ff416c);
+
+                
+            }
+            input{
+                padding: 0 15px;
+                width: 500px;
+                height: 60px;
+                border: none;
+                border-radius: 10px;
+                outline: none !important;
+                font-size: 22px;
+            }
+            input::placeholder{
+                color: #e52e71;
+                opacity: 0.5;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Color flipper -->
+        <div class="container1">
+            <h3 class="heading">Color Flipper</h3>
+            <button id="red" onclick="setColor('red')">Red</button>
+            <button id="green" onclick="setColor('green')">Green</button>
+            <button id="blue" onclick="setColor('blue')">Blue</button>
+            <button onclick="randomColor()">Random</button>
+        </div>
+        <!-- Palindrome checker -->
+        <div class="container2">
+            <h3 class="heading">Palindrome Checker</h3>
+            <input id="input" type="text" placeholder="Type Something">
+            <button>Check</button>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>
