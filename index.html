@@ -42,6 +42,7 @@
             }
             button:hover {
                 cursor: pointer;
+            
             }
             /* end styling for Color Flipper */
             /* start styling for Palindrome Checker */
@@ -71,7 +72,7 @@
         </style>
     </head>
     <body>
-        <!-- Color flipper -->
+        <!-- Color Flipper -->
         <div class="container1">
             <h3 class="heading">Color Flipper</h3>
             <button id="red" onclick="setColor('red')">Red</button>
@@ -79,12 +80,14 @@
             <button id="blue" onclick="setColor('blue')">Blue</button>
             <button onclick="randomColor()">Random</button>
         </div>
-        <!-- Palindrome checker -->
+        <!-- Palindrome Checker -->
         <div class="container2">
             <h3 class="heading">Palindrome Checker</h3>
-            <input id="input" type="text" placeholder="Type Something">
-            <button>Check</button>
+            <input id="input1" type="text" placeholder="Type Something">
+            <button onclick="check()">Check</button>
         </div>
+        <!-- Random Quote Generator -->
+         
         <script src="script.js"></script>
     </body>
 </html>
