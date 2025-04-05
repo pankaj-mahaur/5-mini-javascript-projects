@@ -67,7 +67,7 @@
               margin: 0 auto;
               width: 95%;
             }
-            input{
+            .container2 input{
                 padding: 0 15px;
                 width: 50%;
                 height: 60px;
@@ -76,7 +76,7 @@
                 outline: none !important;
                 font-size: 22px;
             }
-            input::placeholder{
+            .container2 input::placeholder{
                 color: #e52e71;
                 opacity: 0.5;
             }
@@ -129,6 +129,62 @@
                 box-shadow: 0 2px 0 #747474;
             }
             /* end styling for Stop Watch */
+            /* start styling for TODO LIST */
+            .container5 {
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                flex-direction: column;
+                height: 100vh;
+                width: 100%;
+                font-family: Arial, sans-serif;
+                    
+            }
+            .container5 h1{
+                margin-top: 100px;
+            }
+            .container5 input{
+                padding: 10px;
+                width: 200px;
+                border-radius: 5px;
+                border: 2px inset #f00d60;
+                outline: none;
+                font-size: 20px;
+                transition: 0.3s ease-in-out;
+                
+            }
+            .container5 input:hover{
+                border-color: #08c2da;
+            }
+            .container5 input:hover::placeholder{
+                color: #08c2da;
+                transition: 0.3s ease-in-out;
+            }
+            .container5 input:focus{
+                border: 2px ridge #08c2da;
+            }
+            .container5 input::placeholder {
+                color: #f00d60;
+                font-size: 18px;
+            }
+            .container5 input:focus::placeholder {
+                color: #08c2da;
+            }
+            .container5 button{
+                border: 2px groove #f00d60;
+                margin-top: 10px;
+                border-radius: 5px;
+                font-size: 15px;
+                color: #f00d60;
+                height: 40px;
+                background-color: transparent ;
+                transition: 0.4s ease;
+            }
+            .container5 button:hover{
+                border: 2px inset #08c2da ;
+                color: #08c2da;
+            }
+            /* end styling for TODO LIST */
         </style>
     </head>
     <body>
@@ -165,6 +221,14 @@
                 <button onclick="stopClock()">Stop</button>
                 <button onclick="resetClock()">Reset</button>
             </div>
+        </div>
+        <!-- TODO LIST -->
+        <div class="container5">
+            <h1>TODO LIST</h2>
+            <h2>Items</h3>
+            <div id="items"></div>
+            <input type="text" id="itemInput" placeholder="Add an item">
+            <button onclick="addItem">Add Item</button>
         </div>
         <script src="script.js"></script>
     </body>
