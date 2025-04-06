@@ -36,7 +36,6 @@ function check() {
 
 // Random Quote Generator
 const quotes = [
-  
   "It works on my machine. – Every Developer Ever",
 
   "There are two hard things in computer science: cache invalidation, naming things, and off-by-one errors. – Phil Karlton",
@@ -136,7 +135,7 @@ const quotes = [
   "The best code is the code you don’t have to write.",
 
   "Programming: Where ‘It worked yesterday’ is a valid excuse.",
-]
+];
 
 const usedIndexes = new Set();
 const quoteElement = document.getElementById("quote");
@@ -160,33 +159,175 @@ function generateQuote() {
 
 let secondsElapsed = 0;
 let interval = null;
-const time = document.getElementById("time")
+const time = document.getElementById("time");
 
-function padStart(value){
-  return String(value).padStart(2, "0")
+function padStart(value) {
+  return String(value).padStart(2, "0");
 }
-function setTime(){
-  const minutes = Math.floor(secondsElapsed / 60)
-  const seconds = secondsElapsed % 60
+function setTime() {
+  const minutes = Math.floor(secondsElapsed / 60);
+  const seconds = secondsElapsed % 60;
   time.innerHTML = `${padStart(minutes)}:${padStart(seconds)}`;
 }
-function timer (){
+function timer() {
   secondsElapsed++;
   setTime();
 }
 function startClock() {
-  if (interval) stopClock()
-  interval = setInterval(timer, 1000)
+  if (interval) stopClock();
+  interval = setInterval(timer, 1000);
 }
 
 function stopClock() {
-  clearInterval(interval)
+  clearInterval(interval);
 }
 
 function resetClock() {
-  startClock()
+  startClock();
   secondsElapsed = 0;
   setTime();
 }
 
 //TODO LIST
+// let items = [];
+
+// const itemsDiv = document.getElementById("items");
+// const inputs = document.getElementById("itemInput");
+// const storageKey = "items";
+
+// function renderItems() {
+//   itemsDiv.innerHTML = null;
+
+//   for (const [idx, item] of Object.entries(items)) {
+//     const container = document.createElement("div");
+//     container.style.marginBottom = "10px";
+
+//     const text = document.createElement("p");
+//     text.style.display = "inline";
+//     text.style.marginRight = "10px";
+//     text.textContent = item;
+
+//     const button = document.createElement("button");
+//     button.textContent = "Delete";
+//     button.onclick = () => removeItem(idx);
+
+//     container.appendChild(text);
+//     container.appendChild(button);
+
+//     itemsDiv.appendChild(container);
+//   }
+// }
+
+// function loadItems() {
+//   const oldItems = localStorage.getItem(storageKey);
+//   if (oldItems) items = JSON.parse(oldItems);
+//   renderItems();
+// }
+
+// function saveItems() {
+//   const stringItems = JSON.stringify(items);
+//   localStorage.setItem(storageKey, stringItems);
+// }
+
+// function addItem() {
+//   const value = input.value;
+//   if (!value) {
+//     alert("You cannot add an empty item");
+//     return;
+//   }
+//   items.push(value);
+//   renderItems();
+//   input.value = "";
+//   saveItems();
+// }
+
+// function removeItem(idx) {
+//   items.splice(idx, 1);
+//   renderItems();
+//   saveItems();
+// }
+
+// document.addEventListener("DOMContentLoaded", loadItems);
+
+
+////
+let items = [];
+
+const itemsDiv = document.getElementById("items");
+const inputs = document.getElementById("itemInput");
+const storageKey = "items";
+
+function renderItems() {
+  itemsDiv.innerHTML = "";
+
+  items.forEach((item, idx) => {
+    const container = document.createElement("div");
+    // Container styling for proper wrapping
+    container.style.display = "flex";
+    container.style.alignItems = "center";
+    container.style.gap = "10px";
+    container.style.marginBottom = "10px";
+    container.style.marginLeft = "30px";
+    container.style.width = "95%";
+    container.style.maxWidth = "90%";
+
+    const text = document.createElement("p");
+    // Text styling for wrapping
+    text.style.margin = "0";
+    text.style.padding = "0";
+    text.style.wordBreak = "break-word";
+    text.style.overflowWrap = "break-word";
+    text.style.flex = "1";
+    text.style.minWidth = "0"; // Crucial for proper text wrapping
+    text.style.whiteSpace = "pre-wrap"; // Preserve spaces and line breaks
+    text.textContent = item;
+
+    const button = document.createElement("button");
+    button.textContent = "Delete";
+    button.style.flexShrink = "0"; // Prevent button from shrinking
+    button.onclick = () => removeItem(idx);
+
+    container.appendChild(text);
+    container.appendChild(button);
+    itemsDiv.appendChild(container);
+  });
+}
+
+function loadItems() {
+  const oldItems = localStorage.getItem(storageKey);
+  if (oldItems) items = JSON.parse(oldItems);
+  renderItems();
+}
+
+function saveItems() {
+  localStorage.setItem(storageKey, JSON.stringify(items));
+}
+
+function addItem() {
+  const value = inputs.value.trim();
+  if (!value) {
+    alert("You cannot add an empty item");
+    return;
+  }
+  items.push(value);
+  renderItems();
+  inputs.value = "";
+  saveItems();
+}
+
+function removeItem(idx) {
+  items.splice(idx, 1);
+  renderItems();
+  saveItems();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  loadItems();
+  
+  // Add event listener for Enter key
+  inputs.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      addItem();
+    }
+  });
+});
